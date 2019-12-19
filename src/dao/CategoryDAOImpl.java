@@ -32,6 +32,7 @@ public class CategoryDAOImpl implements CategoryDAO{
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Category> getCategoryByParent() {
 		Session session = sessionFactory.openSession();
@@ -40,6 +41,26 @@ public class CategoryDAOImpl implements CategoryDAO{
 		try {
 			tx = session.beginTransaction();
 			list = session.createQuery("FROM Category where parent=0").list();
+			tx.commit();
+		}catch(HibernateException e) {
+			if(tx !=null)
+				tx.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Category> getCategoryByChildren(int parent) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		List<Category> list = null;
+		try {
+			tx = session.beginTransaction();
+			list = session.createQuery("FROM Category where parent='"+ parent +"'").list();
 			tx.commit();
 		}catch(HibernateException e) {
 			if(tx !=null)
