@@ -71,4 +71,22 @@ public class ProductDAOImpl implements ProductDAO {
 		return list;
 	}
 
+	@Override
+	public Product getProduct(int product_id) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		Product p = null;
+		try {
+			tx = session.beginTransaction();
+			p = (Product) session.createQuery("FROM Product where product_id='"+ product_id +"'").uniqueResult();
+		}catch(HibernateException e) {
+			if(tx!=null)
+				tx.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return p;
+	}
+
 }

@@ -34,7 +34,7 @@
 									<div class="panel-body">
 										<ul>
 											<%for(Category c2:categoryDAO.getCategoryByChildren(list.getCategory_id())){ %>
-											<li><a href="?category_id=<%=c2.getCategory_id()%>"><%=c2.getName() %></a></li>
+											<li><a href="index.jsp?category_id=<%=c2.getCategory_id()%>"><%=c2.getName() %></a></li>
 											<%} %>
 										</ul>
 									</div>

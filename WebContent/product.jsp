@@ -42,7 +42,7 @@
 								<div class="choose">
 									<ul class="nav nav-pills nav-justified">
 										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+										<li><a href="detail.jsp?product_id=<%=list.getProduct_id()%>"><i class="fa fa-plus-square"></i>Xem chi tiet</a></li>
 									</ul>
 								</div>
 							</div>
@@ -72,7 +72,7 @@
 								<div class="choose">
 									<ul class="nav nav-pills nav-justified">
 										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+										<li><a href="detail.jsp?product_id=<%=sp.getProduct_id()%>"><i class="fa fa-plus-square"></i>Xem chi tiet</a></li>
 									</ul>
 								</div>
 							</div>

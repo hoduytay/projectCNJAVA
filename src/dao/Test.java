@@ -14,15 +14,16 @@ public class Test {
 		//System.out.println(c2.getName());
 	//}	
 	ProductDAOImpl productDAO = new ProductDAOImpl();
-	for(int i=1;i<=11;i++) {
-		productDAO.insertProduct(new Product(0,"p" + i,"img.png",0 + i,"SP" + i,2));
-	}
+	//for(int i=1;i<=11;i++) {
+		//productDAO.insertProduct(new Product(0,"p" + i,"img.png",0 + i,"SP" + i,2));
+	//}
 	//for (Product p : productDAO.getListProduct()) {
 		//System.out.println(p.getName());
 	//}
-	for(Product p:productDAO.getListproductByCategory(2)) {
-			System.out.println(p.getName());
-	}
+	//for(Product p:productDAO.getListproductByCategory(2)) {
+			//System.out.println(p.getName());
+	//}
+	System.out.println(productDAO.getProduct(1).getName());
 }
 
 

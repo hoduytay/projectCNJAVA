@@ -6,4 +6,5 @@ public interface ProductDAO {
 	public void insertProduct(Product p);
 	public List<Product> getListProduct();
 	public List<Product> getListproductByCategory(int category_id);
+	public Product getProduct(int product_id);
 }
