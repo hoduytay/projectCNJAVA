@@ -1,3 +1,7 @@
+<%@page import = "model.Cart" %>
+<%@page import = "model.Product" %>
+<%@page import ="java.util.TreeMap" %>
+<%@page import ="java.util.Map" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,6 +24,14 @@
     <script src="js/main.js"></script>
 </head>
 <body>
+<%
+Cart cart = (Cart) session.getAttribute("cart");
+if(cart==null){
+	cart = new Cart();
+	session.setAttribute("cart",cart);
+}
+TreeMap<Product,Integer> list = cart.getListProduct();
+%>
 <jsp:include page="header.jsp"></jsp:include>
 
 	<section id="cart_items">
@@ -34,89 +46,46 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">Item</td>
+							<td class="image">Tên Sản phẩm</td>
 							<td class="description"></td>
-							<td class="price">Price</td>
-							<td class="quantity">Quantity</td>
-							<td class="total">Total</td>
+							<td class="price">Giá bán</td>
+							<td class="quantity">Số lượng</td>
+							<td class="total">Thành tiền</td>
 							<td></td>
 						</tr>
 					</thead>
 					<tbody>
+					<%for(Map.Entry<Product,Integer> entry: list.entrySet()){ %>
 						<tr>
 							<td class="cart_product">
 								<a href=""><img src="images/cart/one.png" alt=""></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
+								<h4><a href=""><%=entry.getKey().getName() %></a></h4>
+								<p>Mã sản phẩm: <%=entry.getKey().getProduct_id() %></p>
 							</td>
 							<td class="cart_price">
-								<p>$59</p>
+								<p><%=entry.getKey().getPrice() %></p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
+									<a class="cart_quantity_up" href="CartServlet?command=addItem&product_id=<%=entry.getKey().getProduct_id() %>&cartID=<%=System.currentTimeMillis() %>"> + </a>
+									<input class="cart_quantity_input" type="text" name="quantity" value="<%=entry.getValue() %>" autocomplete="off" size="2" disabled="disabled">
+									<a class="cart_quantity_down" href="CartServlet?command=subItem&product_id=<%=entry.getKey().getProduct_id() %>&cartID=<%=System.currentTimeMillis() %>"> - </a>
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
+								<p class="cart_total_price"><%=entry.getValue() * entry.getKey().getPrice() %></p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+								<a class="cart_quantity_delete" href="CartServlet?command=removeItem&product_id=<%=entry.getKey().getProduct_id() %>&cartID=<%=System.currentTimeMillis() %>"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
-
+						<%} %>
 						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/two.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/three.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							<td>
+							<a class ="btn btn-default update" href="index.jsp">Tiếp tục mua hàng</a>
+							<a class ="btn btn-default update" href="CartServlet?command=cancelItem %>">Hủy đơn hàng</a>
 							</td>
 						</tr>
 					</tbody>

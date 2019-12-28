@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.GenerationType;
 @Entity
 @Table(name="PRODUCT")
-public class Product {
+public class Product implements Comparable<Product> {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -72,6 +72,12 @@ public class Product {
 
 	public void setCategory_id(int category_id) {
 		this.category_id = category_id;
+	}
+
+	@Override
+	public int compareTo(Product p) {
+	
+		return this.product_id - p.product_id;
 	}
 	
 	

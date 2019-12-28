@@ -1,5 +1,6 @@
 <%@page import="dao.ProductDAOImpl" %>
 <%@page import="model.Product" %>
+<%@page import="model.Cart" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,6 +14,11 @@
 <%
 	ProductDAOImpl productDAO = new ProductDAOImpl();
 	String category_id = request.getParameter("category_id");
+	Cart cart = (Cart) session.getAttribute("cart");
+	if(cart==null){
+		cart = new Cart();
+		session.setAttribute("cart",cart);
+	}
 %>
 
 <div class="col-sm-9 padding-right">
@@ -35,7 +41,7 @@
 											<div class="overlay-content">
 												<h2><%=list.getPrice() %></h2>
 											<p><%=list.getName() %></p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a href="CartServlet?command=insertItem&product_id=<%=list.getProduct_id() %>&cartID=<%=System.currentTimeMillis() %>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 											</div>
 										</div>
 								</div>
