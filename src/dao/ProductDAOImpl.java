@@ -79,6 +79,7 @@ public class ProductDAOImpl implements ProductDAO {
 		try {
 			tx = session.beginTransaction();
 			p = (Product) session.createQuery("FROM Product where product_id='"+ product_id +"'").uniqueResult();
+			tx.commit();
 		}catch(HibernateException e) {
 			if(tx!=null)
 				tx.rollback();

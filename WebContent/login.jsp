@@ -25,6 +25,18 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <body>
+
+<% String username_err="",password_err="",username ="";
+	if(request.getAttribute("username_err") !=null){
+		username_err =(String) request.getAttribute("username_err");
+	}
+	if(request.getAttribute("password_err") !=null){
+		password_err =(String) request.getAttribute("password_err");
+	}
+	if(request.getAttribute("username") !=null){
+		username =(String) request.getAttribute("username");
+	}
+%>
 <jsp:include page="header.jsp"></jsp:include>
 <section id="form"><!--form-->
 		<div class="container">
@@ -48,12 +60,14 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="signup-form"><!--sign up form-->
-						<h2>New User Signup!</h2>
-						<form action="#">
-							<input type="text" placeholder="Name"/>
-							<input type="email" placeholder="Email Address"/>
-							<input type="password" placeholder="Password"/>
-							<button type="submit" class="btn btn-default">Signup</button>
+						<h2>Đăng ký tài khoản mới</h2>
+						<form action="UserRegisterServlet" method="post">
+						<p style="color:red;"><%=username_err %></p>
+					
+							<input type="text" placeholder="Tên người dùng" name="username" value="<%=username%>"/>
+							<p style="color:red;"><%=password_err %></p>
+							<input type="password" placeholder="Password" name="password"/>
+							<button type="submit" class="btn btn-default">Đăng ký</button>
 						</form>
 					</div><!--/sign up form-->
 				</div>
