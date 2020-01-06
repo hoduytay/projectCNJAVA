@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<% String username_err="",password_err="",username ="";
+<% String username_err="",password_err="",username ="",err = "";
 	if(request.getAttribute("username_err") !=null){
 		username_err =(String) request.getAttribute("username_err");
 	}
@@ -36,6 +36,9 @@
 	if(request.getAttribute("username") !=null){
 		username =(String) request.getAttribute("username");
 	}
+	if(request.getAttribute("err")!=null){
+		err = (String) request.getAttribute("err");
+	}
 %>
 <jsp:include page="header.jsp"></jsp:include>
 <section id="form"><!--form-->
@@ -43,15 +46,12 @@
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
-						<h2>Login to your account</h2>
-						<form action="#">
-							<input type="text" placeholder="Name" />
-							<input type="email" placeholder="Email Address" />
-							<span>
-								<input type="checkbox" class="checkbox"> 
-								Keep me signed in
-							</span>
-							<button type="submit" class="btn btn-default">Login</button>
+						<h2>Đăng Nhập</h2>
+						<form action="UserLoginServlet" method="post">
+						<p style="color:red"><%=err %></p>
+							<input type="text" placeholder="Tài khoản" name="username"/>
+							<input type="password" placeholder="Mật khẩu" name="password" />
+							<button type="submit" class="btn btn-default">Đăng Nhập</button>
 						</form>
 					</div><!--/login form-->
 				</div>

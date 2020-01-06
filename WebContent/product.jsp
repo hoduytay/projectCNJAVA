@@ -35,7 +35,7 @@
 											<img src="images/home/product1.jpg" alt="" />
 											<h2><%=list.getPrice() %></h2>
 											<p><%=list.getName() %></p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
@@ -47,7 +47,6 @@
 								</div>
 								<div class="choose">
 									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
 										<li><a href="detail.jsp?product_id=<%=list.getProduct_id()%>"><i class="fa fa-plus-square"></i>Xem chi tiet</a></li>
 									</ul>
 								</div>
@@ -65,19 +64,18 @@
 											<img src="images/home/product1.jpg" alt="" />
 											<h2><%=sp.getPrice() %></h2>
 											<p><%=sp.getName() %></p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
 												<h2><%=sp.getPrice() %></h2>
 												<p><%=sp.getName() %></p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 											</div>
 										</div>
 								</div>
 								<div class="choose">
 									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
 										<li><a href="detail.jsp?product_id=<%=sp.getProduct_id()%>"><i class="fa fa-plus-square"></i>Xem chi tiet</a></li>
 									</ul>
 								</div>
