@@ -32,7 +32,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="images/home/product1.jpg" alt="" />
+											<img src="images/home/bookimg-java.jpg" alt="" />
 											<h2><%=list.getPrice() %></h2>
 											<p><%=list.getName() %></p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>

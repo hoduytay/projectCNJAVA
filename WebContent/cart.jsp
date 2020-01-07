@@ -58,7 +58,7 @@ TreeMap<Product,Integer> list = cart.getListProduct();
 					<%for(Map.Entry<Product,Integer> entry: list.entrySet()){ %>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
+								<a href=""><img src="images/cart/cart-imgbook.jpg" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href=""><%=entry.getKey().getName() %></a></h4>

@@ -15,7 +15,7 @@
 
 <div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Category</h2>
+						<h2>Danh Mục</h2>
 						<div class="panel-group category-products" id="accordian">
 						<!--category-productsr-->
 							<%
@@ -24,7 +24,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a>
+										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
 											<span class="badge pull-right"><i class="fa fa-plus"></i></span><%= list.getName() %>
 										</a>
 									</h4>
@@ -38,7 +38,7 @@
 											<%} %>
 										</ul>
 									</div>
-									
+
 								</div>
 								<%} %>
 							</div>
@@ -49,6 +49,6 @@
 						
 						
 					</div>
-				</div>
+		
 </body>
 </html>
